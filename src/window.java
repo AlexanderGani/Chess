@@ -4,9 +4,9 @@ import java.awt.*;
 public class window extends JFrame {
     private final int HEIGHT = 800;
     private final int WIDTH = 800;
-    private Chess C;
+    private Game C;
 
-    public window(Chess c) {
+    public window(Game C) {
         this.C = C;
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Chess");
@@ -28,10 +28,8 @@ public class window extends JFrame {
         Cell[][] cells = C.getBoard();
         for(int i = 0; i < cells.length; i++) {
             for(int j = 0; j < cells[i].length; j++) {
-                Cell[i][j].draw(g, this);
+                cells[i][j].draw(g);
             }
         }
     }
     }
-
-}

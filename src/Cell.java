@@ -4,22 +4,35 @@ public class Cell {
     private int row;
     private int col;
     private String space;
+    private String piece;
 
     public Cell(int row, int col) {
         this.row = row;
         this.col = col;
+        this.piece = "-";
     }
-    public boolean isEmpty() {
-        return this.space.equals(Chess.BLANK);
+    //public boolean isEmpty() {
+        //return this.space.equals(Chess.BLANK);
+   // }
+
+    public int getRow() {
+        return this.row;
     }
-    public void draw(Graphics g, window v) {
+
+    public int getCol() {
+        return this.col;
+    }
+
+    public void setCell(String piece) {
+        this.piece = piece;
+    }
+    public void draw(Graphics g) {
         int width = 100;
         g.drawRect(100 + (width * col), 100 + (width * row), width, width);
-        if (space.equals("X")) {
-            g.drawImage(v.getImage(), 100 + (width * col), 100 + (width * row), width, width, v);
-        }
-        else if(space.equals("O")) {
-            g.drawImage(v.getImage(), 100 + (width * col), 100 + (width * row), width, width, v);
-        }
     }
+
+    public String toString() {
+        return this.piece;
+    }
+
 }
