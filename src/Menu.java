@@ -4,7 +4,7 @@ public class Menu {
     private window w;
     private Game l;
 
-    public Menu() {
+    public Menu(window w) {
 
     }
 

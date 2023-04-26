@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
-public class window extends JFrame {
+public class window extends JFrame implements MouseListener, MouseMotionListener {
     private final int HEIGHT = 850;
     private final int WIDTH = 825;
     private Image[] pawn, rook, knight, bishop, queen, king;
@@ -102,6 +105,26 @@ public class window extends JFrame {
             g.setColor(Color.BLACK);
             g.drawString(l.findWinner() + " wins!", 412, 425);
         }
+
+    }
+
+    public void mouseMoved(MouseEvent E) {
+
+    }
+
+    public void mousePressed(MouseEvent E) {
+
+    }
+
+    public void mouseReleased(MouseEvent E) {
+
+    }
+
+    public void mouseClicked(MouseEvent E) {
+
+    }
+
+    public void mouseDragged(MouseEvent E) {
 
     }
 
