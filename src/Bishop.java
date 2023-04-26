@@ -31,10 +31,10 @@ public class Bishop extends Piece {
             wbishop = w.getBishop()[0];
             bbishop = w.getBishop()[1];
             if(isWhite) {
-                g.drawImage(wbishop, 25 + (100 * y), 50 + (100 * x), 100, 100, w);
+                g.drawImage(wbishop, 25 + (90 * y), 50 + (90 * x), 90, 90, w);
             }
             else {
-                g.drawImage(bbishop, 25 + (100 * y), 50 + (100 * x), 100, 100, w);
+                g.drawImage(bbishop, 25 + (90 * y), 50 + (90 * x), 90, 90, w);
             }
         }
 

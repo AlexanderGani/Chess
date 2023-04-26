@@ -33,10 +33,10 @@ public class Rook extends Piece {
         wrook = w.getRook()[0];
         brook = w.getRook()[1];
         if (isWhite) {
-            g.drawImage(wrook, 25 + (100 * y), 50 + (100 * x), 100, 100, w);
+            g.drawImage(wrook, 25 + (90 * y), 50 + (90 * x), 90, 90, w);
         }
         else {
-            g.drawImage(brook, 25 + (100 * y), 50 + (100 * x), 100, 100, w);
+            g.drawImage(brook, 25 + (90 * y), 50 + (90 * x), 90, 90, w);
         }
     }
 }

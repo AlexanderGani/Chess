@@ -117,7 +117,7 @@ public class window extends JFrame implements MouseListener, MouseMotionListener
     }
 
     public void mouseReleased(MouseEvent E) {
-
+        int col = E.getX() -
     }
 
     public void mouseClicked(MouseEvent E) {
@@ -125,6 +125,14 @@ public class window extends JFrame implements MouseListener, MouseMotionListener
     }
 
     public void mouseDragged(MouseEvent E) {
+
+    }
+
+    public void mouseEntered(MouseEvent E) {
+
+    }
+
+    public void mouseExited(MouseEvent E) {
 
     }
 

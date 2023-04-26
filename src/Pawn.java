@@ -48,10 +48,10 @@ public class Pawn extends Piece {
         wpawn = w.getPawn()[0];
         bpawn = w.getPawn()[1];
         if (isWhite) {
-            g.drawImage(wpawn, 25 + (100 * y), 50 + (100 * x), 100, 100, w);
+            g.drawImage(wpawn, 25 + (90 * y), 50 + (90 * x), 90, 90, w);
         }
         else {
-            g.drawImage(bpawn, 25 + (100 * y), 50 + (100 * x), 100, 100, w);
+            g.drawImage(bpawn, 25 + (90 * y), 50 + (90 * x), 90, 90, w);
         }
     }
 

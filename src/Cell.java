@@ -26,7 +26,7 @@ public class Cell {
     }
     public void draw(Graphics g, window w) {
         //draws checkers and piece in cell
-        g.fillRect(25 + (y * 100), 50 + x * 100, 100, 100);
+        g.fillRect(25 + (y * 90), 50 + x * 90, 90, 90);
         if (p != null) {
             p.draw(g, w);
         }

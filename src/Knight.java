@@ -41,10 +41,10 @@ public class Knight extends Piece {
         wknight = w.getKnight()[0];
         bknight = w.getKnight()[1];
         if (isWhite) {
-            g.drawImage(wknight, 25 + (100 * y), 50 + (100 * x), 100, 100, w);
+            g.drawImage(wknight, 25 + (90 * y), 50 + (90 * x), 90, 90, w);
         }
         else {
-            g.drawImage(bknight, 25  + (100 * y), 50 + (100 * x), 100, 100, w);
+            g.drawImage(bknight, 25  + (90 * y), 50 + (90 * x), 90, 90, w);
         }
     }
 }

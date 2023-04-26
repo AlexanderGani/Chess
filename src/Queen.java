@@ -34,10 +34,10 @@ public class Queen extends Piece {
         bqueen = w.getQueen()[1];
         //draw white or black
         if (isWhite) {
-            g.drawImage(wqueen, 25 + (100 * y), 50 + (100 * x), 100, 100, w);
+            g.drawImage(wqueen, 25 + (90 * y), 50 + (90 * x), 90, 90, w);
         }
         else {
-            g.drawImage(bqueen, 25 + (100 * y), 50 + (100 * x), 100, 100, w);
+            g.drawImage(bqueen, 25 + (90 * y), 50 + (90 * x), 90, 90, w);
         }
     }
 }
