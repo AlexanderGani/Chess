@@ -11,10 +11,7 @@ public class Piece {
         this.x = x;
         this.y = y;
     }
-    public void move(int row, int col, Game l) {
-        Cell[][] board = l.getBoard();
-        board[row][col].setPiece(this);
-        board[x][y].removePiece();
+    public void move(int nX, int nY, Game l) {
     }
     public void setEaten(boolean s) {
         isEaten = s;
@@ -25,7 +22,7 @@ public class Piece {
     public boolean isWhite() {
         return isWhite;
     }
-    public boolean isValidMove(int row, int col) {
+    public boolean isValidMove(int row, int col, Game l) {
         return true;
     }
     public void draw(Graphics g, window w) {

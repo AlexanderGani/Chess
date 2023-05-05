@@ -25,43 +25,10 @@ public class Game {
         System.out.println("Instructions:\n" + "Input the row/col of your piece and then the row/col you want to"
         + " move it to.\n" + "Remember, pawns move 1 tile forwards, knights move in an L shape, and king can move 1 tile"
                 + " in every direction");
-        //main loop
-        while (!this.checkWin()) {
-            //all of these while loops are checks to avoid out of bounds exception error
-            System.out.println("Enter your piece's row:");
-            int row1 = input.nextInt();
-            while (row1 > 7) {
-                System.out.println("Enter your piece's row:");
-                row1 = input.nextInt();
-            }
-            System.out.println("Enter your piece's col:");
-            int col1 = input.nextInt();
-            while (col1 > 7) {
-                System.out.println("Enter your piece's col:");
-                col1 = input.nextInt();
-            }
-            System.out.println("Enter your Row Pick:");
-            int row = input.nextInt();
-            while (row > 7) {
-                System.out.println("Enter your Row Pick:");
-                row = input.nextInt();
-            }
-            System.out.println("Enter your Col Pick:");
-            int col = input.nextInt();
-            while (col > 7) {
-                System.out.println("Enter your Col Pick:");
-                col = input.nextInt();
-            }
             //check valid move, then move
-            if (board[row1][col1].getPiece() != null && board[row1][col1].getPiece().isValidMove(row, col)) {
-                board[row1][col1].getPiece().move(row, col, this);
-            } else {
-                System.out.println("That space is taken, or you entered an invalid row/col");
-            }
             //repaint window to update piece locations
             w.repaint();
-        }
-        System.out.println(findWinner() + " wins!");
+       // System.out.println(findWinner() + " wins!");
     }
 
     public void initBoard() {
@@ -92,7 +59,7 @@ public class Game {
         board[7][4].setPiece(new Queen(7, 4, false));
     }
 
-    public boolean checkWin() {
+   /* public boolean checkWin() {
         //if more than 1 king, return false, else return true
         int count = 0;
         for (int i = 0; i < 8; i++) {
@@ -108,7 +75,7 @@ public class Game {
         return false;
     }
 
-    public String findWinner() {
+     public String findWinner() {
         //find specific winner (white or black)
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -123,7 +90,7 @@ public class Game {
             }
         }
         return null;
-    }
+    } */
 
     public Cell[][] getBoard() {
         return this.board;

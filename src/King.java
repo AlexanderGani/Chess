@@ -33,7 +33,7 @@ public class King extends Piece {
     public boolean isWhite() {
         return isWhite;
     }
-    public boolean isValidMove(int row, int col) {
+    public boolean isValidMove(int row, int col, Game l) {
         //valid moves - 1 in every direction
         if (row == x + 1 || row == x - 1 || col == y + 1 || col == y - 1 || (row == x + 1 && col == y + 1) ||
                 (row == x + 1 && col == y - 1) || (row == x - 1 && col == y + 1) || (row == x - 1 && col == y - 1)) {

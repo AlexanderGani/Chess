@@ -25,17 +25,22 @@ public class Pawn extends Piece {
         }
         board[row][col].setPiece(this);
     }
-    public boolean isValidMove(int row, int col) {
+    public boolean isValidMove(int row, int col, Game l) {
         //see valid moves - basically only up 1
         if (isWhite) {
-            if (row == x + 1 && col == y) {
+            //doesn't work yet but to prevent pawns from eating piece in front of them
+            if ((row == x + 1 && col == y && l.getBoard()[y][x + 1].getPiece() == null) ||
+                    (row == x + 1 && col == y + 1 && l.getBoard()[y + 1][x + 1].getPiece() != null)
+                    || (row == x + 1 && col == y - 1 && l.getBoard()[y - 1][x + 1] != null)) {
                 return true;
             }
             return false;
         }
         //for black pieces
         else {
-            if (row == x - 1 && col == y) {
+            if ((row == x - 1 && col == y && l.getBoard()[y][x - 1].getPiece() == null) ||
+                    (row == x - 1 && col == y + 1 && l.getBoard()[y + 1][x - 1] .getPiece() != null)
+                    || (row == x - 1 && col == y - 1 && l.getBoard()[y - 1][x - 1] != null)) {
                 return true;
             }
             return false;

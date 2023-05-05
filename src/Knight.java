@@ -26,7 +26,7 @@ public class Knight extends Piece {
         }
         board[row][col].setPiece(this);
     }
-    public boolean isValidMove(int row, int col) {
+    public boolean isValidMove(int row, int col, Game l) {
         //valid moves - L shapes
         if ((row == x + 2 && col == y + 1) || (row == x + 2 && col == y - 1) || (row == x - 2 && col == y + 1)
                 || (row == x - 2 && col == y - 1)) {

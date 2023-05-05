@@ -10,10 +10,13 @@ public class window extends JFrame implements MouseListener, MouseMotionListener
     private final int WIDTH = 825;
     private Image[] pawn, rook, knight, bishop, queen, king;
     private Game l;
+    private Piece p;
+    private int ix, iy;
 
     public window(Game l) {
         this.l = l;
         //import resources for white/black pieces
+        addMouseListener(this);
         rook = new Image[2];
         rook[0] = new ImageIcon("Resources/wrook.png").getImage();
         rook[1] = new ImageIcon("Resources/brook.png").getImage();
@@ -99,40 +102,65 @@ public class window extends JFrame implements MouseListener, MouseMotionListener
             Green =! Green;
         }
         //draw win on screen
-        if(l.checkWin()) {
-            Font m = new Font("m", Font.ROMAN_BASELINE, 50);
+     /*   if(l.checkWin()) {
+            Font m = new Font("m", Font.BOLD, 50);
             g.setFont(m);
             g.setColor(Color.BLACK);
             g.drawString(l.findWinner() + " wins!", 412, 425);
+        } */
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        ix = (e.getX() - 25) / 90;
+        iy = (e.getY() - 50) / 90;
+
+        Piece piece = l.getBoard()[iy][ix].getPiece();
+
+        if (piece != null) {
+            p = piece;
         }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+        if (p == null) {
+            return;
+        }
+        int col = (e.getX() - 25) / 90;
+        int row = (e.getY() - 50) / 90;
+
+        if (p.isValidMove(row, col, l)) {
+            p.move(row, col, l);
+        }
+        repaint();
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
 
     }
 
-    public void mouseMoved(MouseEvent E) {
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        int deltaX = e.getX() - ix;
+        int deltaY = e.getY() - iy;
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
 
     }
 
-    public void mousePressed(MouseEvent E) {
-
-    }
-
-    public void mouseReleased(MouseEvent E) {
-        int col = E.getX() -
-    }
-
-    public void mouseClicked(MouseEvent E) {
-
-    }
-
-    public void mouseDragged(MouseEvent E) {
-
-    }
-
-    public void mouseEntered(MouseEvent E) {
-
-    }
-
-    public void mouseExited(MouseEvent E) {
+    @Override
+    public void mouseExited(MouseEvent e) {
 
     }
 
