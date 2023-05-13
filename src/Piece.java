@@ -3,6 +3,7 @@ import java.awt.*;
 public class Piece {
     //abstract class - never used
     private int x, y;
+    private int lX, lY;
     private boolean isWhite;
     private boolean isEaten;
 
@@ -11,7 +12,14 @@ public class Piece {
         this.x = x;
         this.y = y;
     }
-    public void move(int nX, int nY, Game l) {
+    public void move(int nX, int nY, Board b) {
+    }
+    public void undoMove(Board b) {
+        Cell[][] board = b.getBoard();
+        board[x][y].removePiece();
+        x = lX;
+        y = lY;
+        board[x][y].setPiece(this);
     }
     public void setEaten(boolean s) {
         isEaten = s;
@@ -22,9 +30,25 @@ public class Piece {
     public boolean isWhite() {
         return isWhite;
     }
-    public boolean isValidMove(int row, int col, Game l) {
+    public boolean isValidMove(int row, int col, Board b) {
         return true;
     }
-    public void draw(Graphics g, window w) {
+    public void promote(Board b, int row, int col) {
+    }
+    public boolean isFirst() {
+        return true;
+    }
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public boolean isChecked(Game l) {
+        return false;
+    }
+    public void draw(Graphics g, Window w) {
     }
 }

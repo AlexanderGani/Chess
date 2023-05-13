@@ -1,14 +1,17 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Cell {
     private int WIDTH = 100;
     private int x, y;
     private Piece p;
+    private Board b;
 
-    public Cell(int x, int y) {
+    public Cell(int x, int y, Board b) {
         //x and y are mixed up for all pieces and cells - too difficult to reset them
         this.x = x;
         this.y = y;
+        this.b = b;
     }
     //find piece in cell, if any
     public Piece getPiece() {
@@ -24,9 +27,18 @@ public class Cell {
     public void removePiece() {
         p = null;
     }
-    public void draw(Graphics g, window w) {
+
+    // Getter methods
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    public void draw(Graphics g, Window w) {
         //draws checkers and piece in cell
-        g.fillRect(25 + (y * 90), 50 + x * 90, 90, 90);
+        g.fillRect((y * 90) ,(x * 90) + 20, 90, 90);
         if (p != null) {
             p.draw(g, w);
         }
