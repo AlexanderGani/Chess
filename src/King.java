@@ -132,6 +132,25 @@ public class King extends Piece {
             }
             return false;
     }
+    /* unfortunately could not get this to work
+    public boolean isCheckmated(Board b) {
+        if (!isChecked(b)) {
+            return false;
+        }
+        for (int i = - 1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+                int row = x + i;
+                int col = y + j;
+                if (isValidMove(row, col, b)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    } */
     public int getX() {
         return x;
     }

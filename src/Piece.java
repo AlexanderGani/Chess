@@ -38,6 +38,11 @@ public class Piece {
     public boolean isFirst() {
         return true;
     }
+    /* couldn't get this to work
+    public boolean isCheckmated(Board b) {
+        return false;
+    } */
+
     public int getX() {
         return x;
     }
