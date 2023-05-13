@@ -15,13 +15,15 @@ public class Rook extends Piece {
         isFirst = true;
     }
     public void move(int row, int col, Board b) {
-        //remove piece from original location, update variables, see if eats king to return win, otherwise eat piece,
-        // then set location
+        // Remove piece from original location, update variables, see if eats king to return win, otherwise eat piece,
+        // Then set location
         Cell[][] board = b.getBoard();
         isFirst = false;
         old = null;
+        // Old coords
         lX = x;
         lY = y;
+        // Remove piece from old pos
         board[x][y].removePiece();
         x = row;
         y = col;
@@ -29,24 +31,33 @@ public class Rook extends Piece {
             if(board[x][y].getPiece() instanceof King) {
                 board[x][y].getPiece().setEaten(true);
             }
+            // set old piece
             old = board[row][col].getPiece();
             board[x][y].removePiece();
         }
+        // update on front end + back end
         board[row][col].setPiece(this);
     }
+    // Undoes moves
     public void undoMove(Board b) {
+        // Get board
         Cell[][] board = b.getBoard();
+        // undoes piece pos
         board[x][y].removePiece();
+        // resets coords
         x = lX;
         y = lY;
+        // resets eaten piece
         if(old != null) {
             board[old.getX()][old.getY()].setPiece(old);
         }
         board[x][y].setPiece(this);
     }
+    // Checks if move is legal
     public boolean isValidMove(int row, int col, Board b) {
         // Get board
         Cell[][] board = b.getBoard();
+        // Make sure move isn't out of bounds
         if (row > 8 || row < 0){
             return false;
         }
@@ -62,6 +73,7 @@ public class Rook extends Piece {
             int nY = Integer.compare(col, y);
             int dX = nX + x;
             int dY = nY + y;
+            // While loop to iterate over so it can't jump over pieces
             while (dX != row || dY != col) {
                 if (board[dX][dY].getPiece() != null) {
                     return false;
@@ -72,77 +84,6 @@ public class Rook extends Piece {
             // Can't eat piece of same color
             if (p == null || p.isWhite() != isWhite) {
                 return true;
-            }
-        }
-        return false;
-    }
-    public boolean willBlock(Board board, Piece p, int row, int col) {
-        Cell[][] b = board.getBoard();
-        //basically we need to get attacking piece x and y and then find if row and col block it
-        Piece king;
-        if (isWhite) {
-            king = board.getWhiteKing();
-        }
-        else {
-            king = board.getBlackKing();
-        }
-        if (board.getAttackingPieces(king.getX(), king.getY()).size() != 1) {
-            return false;
-        }
-        Piece attacker = board.getAttackingPieces(king.getX(), king.getY()).get(0);
-        // if our piece can eat the attacking piece
-        if (isValidMove(attacker.getX(), attacker.getY(), board)) {
-            return true;
-        }
-        else if (attacker instanceof Knight) {
-            return false;
-        }
-        else if (attacker instanceof Bishop) {
-            for (int i = 1; i < Math.abs(king.getX() - attacker.getX()); i++) {
-                // Because compare returns > 0 if row/col is greater than x/y and < 0 if less than, we are able to modify this
-                int r = Integer.compare(king.getX(), attacker.getX());
-                int c = Integer.compare(king.getY(), attacker.getY());
-                if (row == (attacker.getX() + i * r) && col == (attacker.getY() + i * c)) {
-                    return true;
-                }
-            }
-        }
-        else if (attacker instanceof Rook) {
-            int nX = Integer.compare(king.getX(), attacker.getX());
-            int nY = Integer.compare(king.getY(), attacker.getY());
-            int dX = nX + attacker.getX();
-            int dY = nY + attacker.getY();
-            while (dX != row || dY != col) {
-                if (row == dX && col == dY) {
-                    return true;
-                }
-                dX += nX;
-                dY += nY;
-            }
-        }
-        else if (attacker instanceof Queen) {
-            if (king.getX() == attacker.getX() || king.getY() == attacker.getY()) {
-                int nX = Integer.compare(king.getX(), attacker.getX());
-                int nY = Integer.compare(king.getY(), attacker.getY());
-                int dX = nX + attacker.getX();
-                int dY = nY + attacker.getY();
-                while (dX != row || dY != col) {
-                    if (row == dX && col == dY) {
-                        return true;
-                    }
-                    dX += nX;
-                    dY += nY;
-                }
-            }
-            else {
-                for (int i = 1; i < Math.abs(king.getX() - attacker.getX()); i++) {
-                    // Because compare returns > 0 if row/col is greater than x/y and < 0 if less than, we are able to modify this
-                    int r = Integer.compare(king.getX(), attacker.getX());
-                    int c = Integer.compare(king.getY(), attacker.getY());
-                    if (row == (attacker.getX() + i * r) && col == (attacker.getY() + i * c)) {
-                        return true;
-                    }
-                }
             }
         }
         return false;

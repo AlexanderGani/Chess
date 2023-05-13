@@ -12,25 +12,32 @@ public class Queen extends Piece {
         this.x = x;
         this.y = y;
     }
+    // Moves piece
     public void move(int row, int col, Board b) {
         //remove piece from original location, update variables, see if eats king to return win, otherwise eat piece,
         // then set location
         Cell[][] board = b.getBoard();
         old = null;
+        // Set old coords
         lX = x;
         lY = y;
+        // remove piece from old
         board[x][y].removePiece();
+        // Update coords
         x = row;
         y = col;
         if (board[x][y].getPiece() != null) {
             if(board[x][y].getPiece() instanceof King) {
                 board[x][y].getPiece().setEaten(true);
             }
+            // Set old (eaten) piece
             old = board[row][col].getPiece();
             board[x][y].removePiece();
         }
+        // Update on front + back end
         board[row][col].setPiece(this);
     }
+    // Undoes move
     public void undoMove(Board b) {
         Cell[][] board = b.getBoard();
         board[x][y].removePiece();
@@ -41,6 +48,7 @@ public class Queen extends Piece {
         }
         board[x][y].setPiece(this);
     }
+    // Check if legal move
     public boolean isValidMove(int row, int col, Board b) {
         // Get board
         Cell[][] board = b.getBoard();
@@ -60,6 +68,7 @@ public class Queen extends Piece {
             int dX = nX + x;
             int dY = nY + y;
             while (dX != row || dY != col) {
+                // Make sure can't move over pieces
                 if (board[dX][dY].getPiece() != null) {
                     return false;
                 }
