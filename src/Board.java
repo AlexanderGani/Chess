@@ -6,6 +6,7 @@ public class Board {
     private Cell[][] b;
     private Window w;
     public Board() {
+        // Creates board in back end
         b = new Cell[ROWS][COLS];
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
@@ -20,6 +21,7 @@ public class Board {
         return b[row][col];
     }
 
+    // Initialized board with pieces
     public void initBoard() {
         //set piece locations
         for (int i = 0; i < 8; i++) {
@@ -48,6 +50,7 @@ public class Board {
         b[7][4].setPiece(new Queen(7, 4, false));
     }
 
+    // Get white king
     public King getWhiteKing() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -60,6 +63,7 @@ public class Board {
         return null;
     }
 
+    // Get black king
     public King getBlackKing() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -72,6 +76,7 @@ public class Board {
         return null;
     }
 
+    // Array list of attacking pieces for check
     public ArrayList<Piece> getAttackingPieces(int row, int col) {
         ArrayList<Piece> attackingPieces = new ArrayList<Piece>();
         for (int i = 0; i < 8; i++) {
@@ -85,6 +90,7 @@ public class Board {
         return attackingPieces;
     }
 
+    // Also couldn't implement
     public void reset() {
         Board d = new Board();
     }
